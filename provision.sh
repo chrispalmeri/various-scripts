@@ -16,6 +16,7 @@ EOF
 sed -i 's/\r//g' /vagrant/.env
 sed -i -e '$a\' /vagrant/.env
 source /vagrant/.env
+# not actually used within this file
 
 # Timezone
 cp /usr/share/zoneinfo/America/Chicago /etc/localtime
@@ -24,9 +25,7 @@ cp /usr/share/zoneinfo/America/Chicago /etc/localtime
 mkdir -p /vagrant/log
 
 # Update and install software
-apt-get update
-#apt-get upgrade
-apt-get install -y apache2 sqlite3 php libapache2-mod-php php-curl php-sqlite3
+source /vagrant/software.sh
 
 # Add another PHP .ini to be parsed after the defaults
 cat > /etc/php/7.4/apache2/conf.d/99-custom.ini << EOF
