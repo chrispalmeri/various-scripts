@@ -13,7 +13,7 @@ echo "start installing software"
 apt-get update
 #apt-get upgrade
 # gonna skip that for local setup
-apt-get install -y apache2 sqlite3 php libapache2-mod-php php-curl php-sqlite3
+apt-get install -y git apache2 sqlite3 php libapache2-mod-php php-curl php-sqlite3
 
 # ufw?
 # is that any problem locally?

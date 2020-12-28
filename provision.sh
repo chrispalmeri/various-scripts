@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Don't let WSL ruin it for everyone with it's virtualizatiion
 # features that botch the hashes for ubuntu archives
-mkdir /etc/gcrypt
+mkdir -p /etc/gcrypt
 cat > /etc/gcrypt/hwf.deny << EOF
 all
 EOF
@@ -28,7 +28,7 @@ mkdir -p /vagrant/log
 source /vagrant/software.sh
 
 # Add another PHP .ini to be parsed after the defaults
-cat > /etc/php/7.4/apache2/conf.d/99-custom.ini << EOF
+cat > /etc/php/7.3/apache2/conf.d/90-custom.ini << EOF
 date.timezone = America/Chicago
 error_log = /vagrant/log/php-error.log
 EOF

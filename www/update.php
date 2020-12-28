@@ -1,10 +1,10 @@
 <?php
 
-$command = 'git pull && rsync -av --delete www/ /var/www/html 2>&1';
+$command = "git pull && rsync -av --delete --delete-excluded --include='www/***' --include='php/***' --exclude='*' /home/www-data/app/ /srv/app/ 2>&1";
 $output = array();
 $result = '';
 
-chdir('/home/www-data/app');
+chdir('/home/www-data/app'); // should catch errors from this
 exec($command, $output, $result);
 
 $response = array(
