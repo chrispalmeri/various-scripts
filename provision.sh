@@ -21,35 +21,8 @@ source /vagrant/.env
 # Timezone
 cp /usr/share/zoneinfo/America/Chicago /etc/localtime
 
-# Make a log directory
-mkdir -p /vagrant/log
-
-# Update and install software
-source /vagrant/software.sh
-
-# Add another PHP .ini to be parsed after the defaults
-cat > /etc/php/7.3/apache2/conf.d/90-custom.ini << EOF
-date.timezone = America/Chicago
-error_log = /vagrant/log/php-error.log
-EOF
-
-# Overwrite default Apache .conf file
-cat > /etc/apache2/sites-available/000-default.conf << EOF
-<VirtualHost *:80>
-    ServerName example.com
-
-    DocumentRoot /vagrant/www
-
-    <Directory /vagrant/www>
-        Options -Indexes +FollowSymLinks -MultiViews
-        AllowOverride All
-        Require all granted
-    </Directory>
-
-    ErrorLog /vagrant/log/apache-error.log
-    CustomLog /vagrant/log/apache-access.log combined
-</VirtualHost>
-EOF
+# Run the installer
+source /vagrant/install.sh vagrant
 
 # Copy environment variables from .env
 # if not a comment and not blank
@@ -65,7 +38,6 @@ done < /vagrant/.env
 # Move to apache conf available
 mv /tmp/env.conf /etc/apache2/conf-available/
 
-# Enable config and mod rewrite and restart Apache
+# Enable config and restart Apache
 a2enconf env
-a2enmod rewrite
 systemctl restart apache2

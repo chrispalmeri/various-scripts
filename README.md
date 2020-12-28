@@ -23,6 +23,6 @@ add `sudo apachectl configtest`
 
 ## Testing
 
-  * You can `vagrant ssh` and `sudo ./install.sh`
+  * You can `vagrant ssh` and `sudo ./install.sh` (either from /vagrant or /home/www-data/app)
   * Will change web root, and update should work
   * You will no longer be serving your local copy though, and have to `vagrant provision` to revert
