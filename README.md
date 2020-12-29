@@ -1,8 +1,6 @@
 # various-scripts
 
-instructions should be curl install script, execute. but then no seperate software.sh, and provision needs to be same
-
-add `sudo apachectl configtest`
+Apache and PHP, GitHub app can update itself
 
 ## Locally
 
@@ -20,6 +18,12 @@ add `sudo apachectl configtest`
   * `sudo ./install.sh`
   * View it at your server's address
   * Update app from the UI
+
+Alternately
+
+  * curl -O https://raw.githubusercontent.com/chrispalmeri/various-scripts/master/install.sh
+  * chmod +x install.sh
+  * sudo ./install.sh
 
 ## Testing
 

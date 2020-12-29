@@ -10,7 +10,6 @@ build=/home/www-data/app
 serve=/srv/app
 
 if [[ $1 ]]; then
-  echo "vagrant"
   build=/vagrant
   serve=/vagrant
 fi
@@ -36,9 +35,18 @@ mkdir -p /home/www-data
 chown www-data:www-data /home/www-data
 usermod -d /home/www-data www-data
 
-# clone repo as www-data
-# check if exists first (hard reset and pull instead)
-sudo -u www-data git clone https://github.com/chrispalmeri/various-scripts.git /home/www-data/app
+# clone repo as www-data, check if exists first
+if [[ -d /home/www-data/app ]]; then
+  cd /home/www-data/app
+  #sudo -u www-data git fetch
+  #if [[ $(sudo -u www-data git rev-parse HEAD) != $(sudo -u www-data git rev-parse @{u}) ]]; then
+    # sudo -u www-data git reset --hard
+    sudo -u www-data git pull
+  #fi
+else
+  sudo -u www-data git clone https://github.com/chrispalmeri/various-scripts.git /home/www-data/app
+fi
+
 # copy www to www
 rsync -av --delete --delete-excluded --include='www/***' --include='php/***' --exclude='*' /home/www-data/app/ /srv/app/
 
@@ -66,6 +74,8 @@ cat > /etc/apache2/sites-available/000-default.conf << EOF
     CustomLog $build/log/apache-access.log combined
 </VirtualHost>
 EOF
+
+#apachectl configtest
 
 # Enable mod rewrite and restart Apache
 a2enmod rewrite

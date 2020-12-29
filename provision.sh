@@ -13,9 +13,9 @@ EOF
 # strip windows carriage returns
 # ensure ends with linebreak
 # and source environment variables
-sed -i 's/\r//g' /vagrant/.env
-sed -i -e '$a\' /vagrant/.env
-source /vagrant/.env
+#sed -i 's/\r//g' /vagrant/.env
+#sed -i -e '$a\' /vagrant/.env
+#source /vagrant/.env
 # not actually used within this file
 
 # Timezone
