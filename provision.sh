@@ -1,25 +1,11 @@
 #!/bin/bash
 
-export DEBIAN_FRONTEND=noninteractive
-
-# Don't let WSL ruin it for everyone with it's virtualizatiion
-# features that botch the hashes for ubuntu archives
+# Don't let WSL ruin it with virtualizatiion features
+# that botch the hashes for package archives
 mkdir -p /etc/gcrypt
 cat > /etc/gcrypt/hwf.deny << EOF
 all
 EOF
-
-# From .env file
-# strip windows carriage returns
-# ensure ends with linebreak
-# and source environment variables
-#sed -i 's/\r//g' /vagrant/.env
-#sed -i -e '$a\' /vagrant/.env
-#source /vagrant/.env
-# not actually used within this file
-
-# Timezone
-cp /usr/share/zoneinfo/America/Chicago /etc/localtime
 
 # Run the installer
 source /vagrant/install.sh vagrant

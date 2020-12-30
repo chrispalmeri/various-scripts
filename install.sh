@@ -6,6 +6,8 @@ if [[ $EUID != 0 ]]; then
   exit 1
 fi
 
+# setup variables to use below
+# to switch to shared folder when vagrant
 build=/home/www-data/app
 serve=/srv/app
 
@@ -14,14 +16,15 @@ if [[ $1 ]]; then
   serve=/vagrant
 fi
 
+# Timezone
+timedatectl set-timezone America/Chicago
 
 # Make a log directory
 mkdir -p $build/log
 
 # Update and install software
 apt-get update
-apt-get install -y git apache2 sqlite3 php libapache2-mod-php php-curl php-sqlite3
-# ufw? is that any problem locally?
+apt-get install -y git apache2 sqlite3 php libapache2-mod-php php-curl php-sqlite3 ufw
 
 
 # need to stop apache while modifying the user
@@ -75,8 +78,12 @@ cat > /etc/apache2/sites-available/000-default.conf << EOF
 </VirtualHost>
 EOF
 
-#apachectl configtest
-
 # Enable mod rewrite and restart Apache
 a2enmod rewrite
 systemctl restart apache2
+
+# Enable firewall
+ufw allow ssh
+ufw allow http
+ufw allow https
+ufw --force enable
