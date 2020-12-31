@@ -7,6 +7,10 @@ Apache and PHP, GitHub app can update itself
   * ENV check, but will it be available during provision
   * NOAA grid should go in DB
 
+Repo also contains `nanopi-neo-node-js` and `old-box` directories, which are seperate things
+
+Actually the rest of this repo is probably outdated compared to https://github.com/chrispalmeri/task-board
+
 ## Locally
 
   * `git clone git@github.com:chrispalmeri/various-scripts.git`
