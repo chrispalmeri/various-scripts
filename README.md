@@ -2,6 +2,11 @@
 
 Apache and PHP, GitHub app can update itself
 
+  * fix placeholder `app` name
+  * fix apache servername
+  * ENV check, but will it be available during provision
+  * NOAA grid should go in DB
+
 ## Locally
 
   * `git clone git@github.com:chrispalmeri/various-scripts.git`
@@ -13,20 +18,13 @@ Apache and PHP, GitHub app can update itself
 ## Production
 
   * Update env's `sudo nano /etc/environment`
-  * In home dir `git clone https://github.com/chrispalmeri/various-scripts.git`
-  * `cd various-scripts/`
+  * In home dir `curl -O https://raw.githubusercontent.com/chrispalmeri/various-scripts/master/install.sh`
+  * `chmod +x install.sh`
   * `sudo ./install.sh`
   * View it at your server's address
   * Update app from the UI
 
-Alternately
-
-  * curl -O https://raw.githubusercontent.com/chrispalmeri/various-scripts/master/install.sh
-  * chmod +x install.sh
-  * sudo ./install.sh
-
 ## Testing
 
-  * You can `vagrant ssh` and `sudo ./install.sh` (either from /vagrant or /home/www-data/app)
-  * Will change web root, and update should work
-  * You will no longer be serving your local copy though, and have to `vagrant provision` to revert
+  * You can test the update.php, it should work but will change web root
+  * You will no longer be serving your local copy, and have to `vagrant provision` to revert
