@@ -12,6 +12,7 @@
     },
     "editor.renderWhitespace": "all",
     "editor.rulers": [80, 120],
+    "editor.semanticHighlighting.enabled": false,
     "editor.suggestOnTriggerCharacters": false,
     "editor.tokenColorCustomizations": {
         "textMateRules": [{
@@ -25,6 +26,7 @@
     "files.trimTrailingWhitespace": true,
     "html.autoClosingTags": false,
     "insertDateString.format": "YYYY-MM-DDThh:mm:ssZZZ",
+    "javascript.suggestionActions.enabled": false,
     "javascript.updateImportsOnFileMove.enabled": "never",
     "php.validate.enable": false,
     "telemetry.enableCrashReporter": false,
