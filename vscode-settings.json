@@ -2,6 +2,9 @@
     "breadcrumbs.enabled": false,
     "debug.javascript.codelens.npmScripts": "never",
     "editor.acceptSuggestionOnEnter": "off",
+    "editor.emptySelectionClipboard": false,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
     "editor.codeLens": false,
     "editor.find.addExtraSpaceOnTop": false,
     "editor.lightbulb.enabled": false,
@@ -11,9 +14,14 @@
         "strings": false
     },
     "editor.renderWhitespace": "all",
-    "editor.rulers": [80, 120],
+    "editor.rulers": [
+        80,
+        120
+    ],
     "editor.semanticHighlighting.enabled": false,
+    "editor.suggest.showWords": false,
     "editor.suggestOnTriggerCharacters": false,
+    "editor.wordBasedSuggestions": false,
     "editor.tokenColorCustomizations": {
         "textMateRules": [{
             "scope": "meta.function-call.generic.python",
@@ -24,15 +32,34 @@
     "explorer.confirmDragAndDrop": false,
     "extensions.ignoreRecommendations": true,
     "files.trimTrailingWhitespace": true,
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    },
     "html.autoClosingTags": false,
     "insertDateString.format": "YYYY-MM-DDThh:mm:ssZZZ",
     "javascript.suggestionActions.enabled": false,
     "javascript.updateImportsOnFileMove.enabled": "never",
     "php.validate.enable": false,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "terminal.integrated.shellArgs.windows": ["-NoLogo"],
     "window.newWindowDimensions": "inherit",
     "workbench.editor.restoreViewState": false,
-    "workbench.enableExperiments": false
+    "workbench.enableExperiments": false,
+    "editor.hover.delay": 800,
+    "workbench.editor.untitled.hint": "hidden",
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "workbench.startupEditor": "none",
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "security.workspace.trust.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "telemetry.telemetryLevel": "off",
+	"terminal.integrated.enablePersistentSessions": false,
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "args": [
+                "-NoLogo"
+            ],
+            "icon": "terminal-powershell"
+        }
+    }
 }
