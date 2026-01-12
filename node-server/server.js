@@ -49,7 +49,7 @@ const mimeTypes = {
 	'.db': 'application/vnd.sqlite3'
 };
 
-const server = http.createServer('request', (request, response) => {
+const server = http.createServer((request, response) => {
 	const location = new URL('http://' + request.headers.host + request.url);
 
 	let file = path.join(dir, httpRoot, decodeURIComponent(location.pathname));
